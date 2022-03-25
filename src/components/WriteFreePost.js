@@ -13,7 +13,7 @@ function WriteFreePost(props) {
     return (
         <div className="writepost">
             <div className="writepost-box">
-                <form action="/oauth2/redirect/fboard" method="post">
+                <form action="http://13.124.89.93:8080/oauth2/redirect/fboard" method="post">
                     <div className="input-box">
                         <input type="text" className="title" placeholder='제목' name='title' />
                         <input type="hidden" className='name' name='name' value={props.currentUser.name} />

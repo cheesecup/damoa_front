@@ -22,9 +22,9 @@ function GroupInfCheck(props) {
   useEffect(() => {
     axios
       .all([
-        axios.get("/oauth2/redirect/groupinfo/read/" + `${id}`),
-        axios.get("/oauth2/redirect/groupinfo/join/user/" + `${id}`),
-        axios.get("/oauth2/redirect/groupinfo/" + `${id}` + "/comments/list"),
+        axios.get("http://13.124.89.93:8080/oauth2/redirect/groupinfo/read/" + `${id}`),
+        axios.get("http://13.124.89.93:8080/oauth2/redirect/groupinfo/join/user/" + `${id}`),
+        axios.get("http://13.124.89.93:8080/oauth2/redirect/groupinfo/" + `${id}` + "/comments/list"),
       ])
       .then(
         axios.spread((res1, res2, res3) => {
@@ -62,7 +62,7 @@ function GroupInfCheck(props) {
 
   // 그룹 가입 버튼
   function joinGroup() {
-    const url = "/oauth2/redirect/groupinfo/join/" + `${id}`;
+    const url = "http://13.124.89.93:8080/oauth2/redirect/groupinfo/join/" + `${id}`;
     if (authenticated === false) {
       // 비로그인시 로그인 화면으로 이동
       return (window.location.href = "/login");
@@ -93,7 +93,7 @@ function GroupInfCheck(props) {
 
   // 그룹 탈퇴 버튼
   function leaveGroup() {
-    const url = "/oauth2/redirect/groupinfo/leave/" + `${id}`;
+    const url = "http://13.124.89.93:8080/oauth2/redirect/groupinfo/leave/" + `${id}`;
     if (authenticated === false) {
       return (window.location.href = "/login")
     } else {
@@ -121,7 +121,7 @@ function GroupInfCheck(props) {
   // 그룹에 가입한 회원 목록
   function joinUser() {
     let userArray = [];
-
+    if(!joinUsers.includes('html')) {
     joinUsers.map((val, index) => {
       userArray.push(
         <div className="group">
@@ -132,11 +132,12 @@ function GroupInfCheck(props) {
         </div>
       );
     });
-
-
-    return userArray;
   }
 
+    return userArray;
+   
+  
+}
   // 그룹 이미지 변경 모달
   let [modal, setModal] = useState(false);
 
@@ -148,7 +149,7 @@ function GroupInfCheck(props) {
           <div className="attend">이미지를 선택해주세요</div>
           <div className="btns">
             <form
-              action="/oauth2/redirect/groupinfo/imgupdate"
+              action="http://13.124.89.93:8080/oauth2/redirect/groupinfo/imgupdate"
               method="post"
               enctype="multipart/form-data"
             >
@@ -167,9 +168,12 @@ function GroupInfCheck(props) {
   function btnChange() {
 
     let userArray = [];
+    if(!joinUsers.includes('html')) {
     joinUsers.map((val, index) => {
       userArray.push(val.name);
     });
+  
+  }
 
     let btnArray = [];
 
@@ -202,12 +206,15 @@ function GroupInfCheck(props) {
         </div>
       )
     }
-
+  
     return btnArray;
+   
   }
 
+  // 댓글
   let filterArray = [];
   function chatList() {
+    if(!comments.includes('html')) {
     comments.map((val, index) => {
       return (
         filterArray.push(
@@ -222,6 +229,7 @@ function GroupInfCheck(props) {
     })
 
     return filterArray;
+    }
   }
 
   return (
@@ -298,7 +306,7 @@ function GroupInfCheck(props) {
                 {chatList()}
               </div>
               <div className="chat">
-                <form action='/oauth2/redirect/groupinfo/comments' method='post'>
+                <form action='http://13.124.89.93:8080/oauth2/redirect/groupinfo/comments' method='post'>
                   <input type="hidden" name="groupInfo" value={testStr.id} />
                   <input type="hidden" name="user" value={currentUser.name} />
                   <textarea name="comment" id="" cols="30" rows="3" placeholder='글을 입력하세요!'></textarea>

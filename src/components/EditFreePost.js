@@ -21,7 +21,7 @@ function EditFreePost(props) {
     useEffect(
         () => {
             axios({
-                url: '/oauth2/redirect/fboard/edit/' + `${id}`,
+                url: 'http://13.124.89.93:8080/oauth2/redirect/fboard/edit/' + `${id}`,
                 method: 'GET'
             }).then((res) => {
                 callback(res.data);
@@ -37,7 +37,7 @@ function EditFreePost(props) {
     return (
         <div className="writepost">
             <div className="writepost-box">
-                <form action="/oauth2/redirect/fboard/" method="post" >
+                <form action="http://13.124.89.93:8080/oauth2/redirect/fboard/" method="post" >
                     <div className="input-box">
                         <input type="text" name='id' value={testStr.id} className='hidden'></input>
                         {/* <input type="text" className="title" placeholder='제목' value={post._id}/> */}

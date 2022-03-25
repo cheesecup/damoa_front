@@ -93,12 +93,10 @@ function Mypage(props) {
                     <div className="join">
                         <div className="title">가입한 그룹</div>
                         <div className="box">
-                            <Link to="/chatroom">
                                 <div className="group">
                                     <div className="name">스윙 댄스 클래스</div>
                                     <div className="field">예술</div>
                                 </div>
-                            </Link>
                             <div className="group">
                                 <div className="name">스윙 댄스 클래스</div>
                                 <div className="field">예술</div>

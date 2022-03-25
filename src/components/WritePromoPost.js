@@ -12,7 +12,7 @@ function WritePromoPost(props) {
     return (
         <div className="writepost">
             <div className="writepost-box">
-                <form action="/oauth2/redirect/pboard" method="post">
+                <form action="http://13.124.89.93:8080/oauth2/redirect/pboard" method="post">
                     <div className="input-box">
                         <input type="text" className="title" placeholder='제목' name='title' />
                         <input type="text" className='name' name='name' value={props.currentUser.name} />

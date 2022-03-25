@@ -42,11 +42,11 @@ function SearchGroup() {
     useEffect(
         () => {
             axios({
-                url: '/oauth2/redirect/groupinfo/list',
+                url: 'http://13.124.89.93:8080/oauth2/redirect/groupinfo/list',
                 method: 'GET'
             }).then((res) => {
                 callback(res.data);
-                console.log(res);
+                console.log("테스트:" + res.data);
                 setAllData(res.data);
                 setFilteredData(res.data);
             }).catch((err) => {
@@ -59,9 +59,7 @@ function SearchGroup() {
     function filterVal() {
 
         {   
-            console.log("test : " + filteredData);
             if(!filteredData.includes('html')) {
-            console.log("if");
             filteredData.map((val, index) => {
                 return(
                     filterArray.push(

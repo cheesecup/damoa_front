@@ -8,7 +8,7 @@ function GroupMake(props) {
       <div className="group-make-box">
         <form
           method="post"
-          action="/oauth2/redirect/groupinfo/add"
+          action="http://13.124.89.93:8080/oauth2/redirect/groupinfo/add"
           enctype="multipart/form-data"
         >
           <table class="table">

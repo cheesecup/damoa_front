@@ -46,7 +46,7 @@ function PromoPostDetail() {
     useEffect(
         () => {
             axios({
-                url: '/oauth2/redirect/pboard/list/' + `${id}`,
+                url: 'http://13.124.89.93:8080/oauth2/redirect/pboard/list/' + `${id}`,
                 method: 'GET'
             }).then((res) => {
                 callback(res.data);
@@ -59,7 +59,7 @@ function PromoPostDetail() {
         if (window.confirm('해당 게시물을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.')) {
 
             axios({
-                url: '/oauth2/redirect/pboard/delete/' + `${id}`,
+                url: 'http://13.124.89.93:8080/oauth2/redirect/pboard/delete/' + `${id}`,
                 method: 'DELETE'
             }).then((res) => {
                 callback(res.data);

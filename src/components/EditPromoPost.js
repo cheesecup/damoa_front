@@ -21,7 +21,7 @@ function EditPromoPost(props) {
     useEffect(
         () => {
             axios({
-                url: '/oauth2/redirect/pboard/edit/' + `${id}`,
+                url: 'http://13.124.89.93:8080/oauth2/redirect/pboard/edit/' + `${id}`,
                 method: 'GET'
             }).then((res) => {
                 callback(res.data);
@@ -35,7 +35,7 @@ function EditPromoPost(props) {
     return (
         <div className="writepost">
         <div className="writepost-box">
-            <form action="/oauth2/redirect/pboard" method="post">
+            <form action="http://13.124.89.93:8080/oauth2/redirect/pboard" method="post">
                 <div className="input-box">
                 <input type="text" name='id' value={testStr.id} className='hidden'></input>
                     <input type="text" className="title" placeholder='제목' name='title' value={testStr.title} onChange={onChange}/>

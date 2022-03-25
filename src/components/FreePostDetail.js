@@ -51,8 +51,8 @@ function FreePostDetail() {
     useEffect(() => {
         axios
             .all([
-                axios.get("/oauth2/redirect/fboard/list/" + `${id}`),
-                axios.get("/oauth2/redirect/fboard/" + `${id}` + "/comments/list"),
+                axios.get("http://13.124.89.93:8080/oauth2/redirect/fboard/list/" + `${id}`),
+                axios.get("http://13.124.89.93:8080/oauth2/redirect/fboard/" + `${id}` + "/comments/list"),
             ])
             .then(
                 axios.spread((res1, res2) => {
@@ -72,7 +72,7 @@ function FreePostDetail() {
         if (window.confirm('해당 게시물을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.')) {
 
             axios({
-                url: '/oauth2/redirect/fboard/delete/' + `${id}`,
+                url: 'http://13.124.89.93:8080/oauth2/redirect/fboard/delete/' + `${id}`,
                 method: 'DELETE'
             }).then((res) => {
                 callback(res.data);
@@ -118,6 +118,7 @@ function FreePostDetail() {
 
     let filterArray = [];
     function commentsList() {
+        if(!comments.includes('html')) {
         comments.map((val, index) => {
             return (
                 filterArray.push(
@@ -130,7 +131,7 @@ function FreePostDetail() {
                 )
             )
         })
-
+    }
         return filterArray;
     }
 
@@ -160,7 +161,7 @@ function FreePostDetail() {
                     {commentsList()}
                 </div>
 
-                <form action='/oauth2/redirect/fboard/comments' method='post'>
+                <form action='http://13.124.89.93:8080/oauth2/redirect/fboard/comments' method='post'>
                     <input type="hidden" name="freeBoard" value={testStr.id} />
                     <input type="hidden" name="user" value={currentUser.name} />
                     <textarea name="comment" id="" cols="30" rows="3" placeholder='댓글을 작성해보세요!'></textarea>

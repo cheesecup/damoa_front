@@ -44,7 +44,7 @@ function PromoPost(props) {
     useEffect(
         () => {
             axios({
-                url: '/oauth2/redirect/pboard/list/',
+                url: 'http://13.124.89.93:8080/oauth2/redirect/pboard/list/',
                 method: 'GET'
             }).then((res) => {
                 callback(res.data);
@@ -63,7 +63,7 @@ function PromoPost(props) {
     let filterArray = [];
 
     function filterVal() {
-        {
+        {   if(!filteredData.includes('html')) {
             filteredData.map((val, index) => {
                 return (
                     filterArray.push(
@@ -80,6 +80,7 @@ function PromoPost(props) {
                     )
                 )
             })
+        }
         }
 
         /*
