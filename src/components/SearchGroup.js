@@ -16,7 +16,7 @@ function SearchGroup() {
 
     // // 검색 기능
     const [allData, setAllData] = useState([]);// 검색한 모든 정보 보유
-    const [filteredData, setFilteredData] = useState([]);//  alldata의 사본 보유, 데이터에서 단어 검색 시 값 변경됨
+    const [filteredData, setFilteredData] = useState(allData);//  alldata의 사본 보유, 데이터에서 단어 검색 시 값 변경됨
 
     let handleSearch = (e) => {// 이벤트 컨트롤 할 수 있는 변수
         console.log(e.target.value);
